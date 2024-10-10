@@ -35,11 +35,11 @@ export function WalletSelector() {
     if (localStorageConnected === null && connected && account?.address) {
       // Update localStorage
       localStorage.setItem("connected", "true");
+      
       // Dispatch a custom event to inform other pages about the wallet connection
       const event = new CustomEvent("walletConnected", {
         detail: { connected: connected },
       });
-      console.log("event dispatched");
       window.dispatchEvent(event);
     }
   }, [ localStorageConnected, connected, account?.address]);
@@ -48,7 +48,15 @@ export function WalletSelector() {
   const handleDisconnect = useCallback(() => {
     // Clear localStorage 
     localStorage.removeItem("connected");
+    
+    // dispatch a custom event to inform other pages about the wallet disconnection
+    const event = new CustomEvent("walletDisconnected", {
+      detail: { connected: connected },
+    });
+    window.dispatchEvent(event);
+
     disconnect();
+
   }, [disconnect]);
 
   const closeDialog = useCallback(() => setIsDialogOpen(false), []);

@@ -9,7 +9,7 @@ export type depositFaToDaoArguments = {
     token_metadata: string;
 };
 
-export const contribute = (args: depositFaToDaoArguments): InputTransactionData => {
+export const depositFaToDao = (args: depositFaToDaoArguments): InputTransactionData => {
   const { dao_identifier, amount, token_metadata } = args;
   return {
     data: {

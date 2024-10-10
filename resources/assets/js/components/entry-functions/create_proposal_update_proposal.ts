@@ -15,7 +15,7 @@ export type createProposalUpdateProposalArguments = {
     opt_min_amount_to_create_proposal: string;
 };
 
-export const createProposalUpdateTransferProposal = (args: createProposalUpdateProposalArguments): InputTransactionData => {
+export const createProposalUpdateProposal = (args: createProposalUpdateProposalArguments): InputTransactionData => {
   const { dao_identifier, title, description, proposal_type, opt_proposal_type, opt_duration, opt_success_vote_percent, opt_min_amount_to_vote, opt_min_amount_to_create_proposal } = args;
   return {
     data: {

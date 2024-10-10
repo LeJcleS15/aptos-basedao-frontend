@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <div class="flex w-full px-10">
+    <div class="flex flex-col w-full px-10 mt-20">
 
-        <div class="home flex flex-col sm:flex-row w-full">
+        <div class="section_one flex flex-col sm:flex-row w-full">
 
             <div class="flex flex-col items-start justify-center w-full sm:w-1/2 sm:pr-16 sm:pl-20 pb-10 pt-10 sm:pt-0">
 
@@ -12,7 +12,7 @@
                 <span class="w-20 border-2 border-amber-600 mt-2"></span>
                 <h3 class="text-md mt-2 font-semibold italic">Collectively building the future ecosystem on Aptos</h3>
 
-                <p class="text-base mt-8">Choose from several different types of DAOs that suit your community's needs and then create a new DAO with one click.</p>
+                <p class="text-base mt-2">From governance to collaboration, create and manage a new DAO on Aptos for your community with ease in just <span class="font-semibold underline">one click</span>.</p>
 
                 <div class="flex flex-row mt-10 space-x-4">
                     <a href="{{ route('show_all_daos') }}">
@@ -33,11 +33,15 @@
 
             </div>
 
-            <div class="flex flex-col items-center justify-center w-full sm:w-1/2 sm:px-6 pb-20 sm:pb-0 relative -top-10" >
-                @include('partials.home_svg')
+            <div class="flex flex-col items-center justify-center w-full sm:w-1/2 sm:px-6 sm:pb-0 relative sm:-top-10" >
+                <img class="px-4" src="https://res.cloudinary.com/blockbard/image/upload/v1728473393/basedao-home-2_bp2r0c.png" alt="decentralised governance"/> 
             </div>
 
         </div>
+
+        @include('pages.partials.dao_models')
+
+        @include('pages.partials.testimonials')
 
     </div>
 

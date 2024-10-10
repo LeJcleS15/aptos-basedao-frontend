@@ -1,9 +1,6 @@
 import { InputTransactionData } from "@aptos-labs/wallet-adapter-react";
 import { MODULE_ADDRESS } from "../../constants";
 
-// Internal utils
-import { convertAmountFromHumanReadableToOnChain } from "../utils/helpers";
-
 export type initDaoArguments = {
     dao_identifier: string,
     name: string;

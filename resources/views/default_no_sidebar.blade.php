@@ -29,7 +29,7 @@
 
 @include('partials.nav')
 
-<div id="app" class="app flex flex-grow min-h-screen mt-14 dark:bg-black z-10">
+<div id="app" class="app flex flex-col flex-grow min-h-screen mt-14 bg-amber-50 z-10">
 
     @yield('content')
 
@@ -47,9 +47,24 @@
     // Listen for the 'walletConnected' event
     window.addEventListener('walletConnected', (event) => {
         const { connected } = event.detail;
-        // console.log('Wallet connected');
-        // console.log("connected: ", connected);
         location.href="/connected"
+    });
+
+    // listen for the 'walletDisconnected' event
+    window.addEventListener('walletDisconnected', (event) => {
+        $('.nav_create_dao_button').addClass('invisible').removeClass('visible');
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let connected = localStorage.getItem("connected");
+
+        if (connected === "true") {
+            // show nav button
+            $('.nav_create_dao_button').addClass('visible').removeClass('invisible');
+        } else {
+            // hide nav button
+            $('.nav_create_dao_button').addClass('invisible').removeClass('visible');
+        }
     });
 
 </script>
