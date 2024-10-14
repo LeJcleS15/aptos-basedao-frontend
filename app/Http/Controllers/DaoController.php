@@ -12,15 +12,26 @@ class DaoController extends Controller
 
     public function showAll(){
         try {
-            return view('daos.show_all_daos');
+            
+            // fetch daos that are initialized from the database
+            $daos = Dao::where('is_initialized', 1)
+                    ->get();
+
+            return view('daos.show_all_daos', compact('daos'));
+
         } catch(\Exception $e){
             abort(400);
         }
     }
 
-    public function show($id){
+    public function show($type, $id){
         try {
-            return view('daos.show_dao', compact('id'));
+
+            $dao = Dao::where('dao_type', $type)
+                ->where('dao_id', $id)
+                ->first();
+
+            return view('daos.show_dao', compact('id', 'dao'));
         } catch(\Exception $e){
             abort(400);
         }
@@ -70,7 +81,7 @@ class DaoController extends Controller
         }
     }
 
-    public function setTakenDao($dao_type){
+    public function setTakenDao($dao_type, $id, Request $request){
         try {
 
             // Update the DAO record to mark it as initialized
@@ -83,12 +94,13 @@ class DaoController extends Controller
             }
 
             $dao->is_initialized = true;
-            $dao->initializer = auth()->user()->id;  // Set the user who initialized it
+            $dao->initializer    = $request->query('signer', ''); 
             $dao->save();
 
             return response()->json(['success' => 'DAO updated successfully']);
 
         } catch(\Exception $e){
+            dd($e);
             abort(400);
         }
     }

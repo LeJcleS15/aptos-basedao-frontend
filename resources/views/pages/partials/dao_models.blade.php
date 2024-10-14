@@ -38,6 +38,7 @@
             </div>
             <div class="mt-2 text-base leading-7 text-gray-600">Enjoy the best of both worlds — democratic governance with structured roles based on token holdings.</div>
           </div>
+          
         </div>
       </div>
     </div>

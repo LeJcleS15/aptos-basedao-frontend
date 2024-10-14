@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="flex w-full py-24" style="background-image: url('https://res.cloudinary.com/blockbard/image/upload/c_scale,w_auto,q_auto,f_auto,fl_lossy/v1728489177/header-2_alyf6e.png'); background-size: cover; background-position: center;">
+    <div class="flex w-full py-24" style="background-image: url('https://res.cloudinary.com/blockbard/image/upload/c_scale,w_auto,q_auto,f_auto,fl_lossy/v1728839558/header-4_gpszvy.png'); background-size: cover; background-position: center;">
         <div class="max-w-7xl">
             <div class="flex flex-col ml-40 bg-white opacity-90 px-12 py-4 rounded-md"> 
                 <h3 class="text-3xl text-amber-600 font-extrabold">Guide</h3>
@@ -15,20 +15,24 @@
 
         <div class="flex flex-col pl-3">
 
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 ">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-yellow-700">
-                            Notice: Campaign will be created on Aptos Testnet
-                        </p>
-                    </div>
+            <div class="bg-yellow-50 border-2 border-amber-400 p-4 rounded-md shadow-lg shadow-amber-300" style="min-height: 600px">
+                
+                <div class="mt-2 px-10 py-6 text-gray-600 space-y-6">
+
+                    <h2 class="font-semibold text-2xl">DAO Models for Different Community Needs</h2>
+                    
+                    <p>BaseDAO offers various governance models to suit different types of communities:</p>
+
+                    <p><strong>Standard DAO:</strong> This model supports collective decision-making, allowing members that hold the DAO’s governance tokens to participate in proposing, voting on, and executing ideas together.</p>
+
+                    <p><strong>Guild DAO:</strong> Designed for specialised and focused groups, the Guild DAO model incorporates a centralized leadership structure without the need for governance tokens, making it a good fit for small to medium communities.</p>
+
+                    <p><strong>Hybrid DAO:</strong> For communities that want a blend of democratic governance and role-based structures, the Hybrid DAO model offers flexibility with governance tokens and member roles together that influences a member’s vote and participation.</p>
+
                 </div>
+
             </div>
+
         </div>
 
     </div>

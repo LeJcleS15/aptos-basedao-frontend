@@ -2,63 +2,37 @@
 
 @section('content')
 
-    <div class="flex max-w-7xl w-full px-10 pt-24 mx-auto">
+    <div class="flex w-full py-24" style="background-image: url('https://res.cloudinary.com/blockbard/image/upload/c_scale,w_auto,q_auto,f_auto,fl_lossy/v1728839558/header-4_gpszvy.png'); background-size: cover; background-position: center;">
+        <div class="max-w-7xl">
+            <div class="flex flex-col ml-40 bg-white opacity-90 px-12 py-4 rounded-md"> 
+                <h3 class="text-3xl text-amber-600 font-extrabold">DAO</h3>
+                <span class="w-14 border-2 border-amber-600 mt-1"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex max-w-7xl w-full px-10 pt-16 pb-32 mx-auto">
 
         <div class="dao_container single_dao flex flex-col sm:flex-row w-full">
 
-            <div class="flex w-full sm:w-2/3 sm:pr-6">
+            <div class="flex w-full sm:w-1/2 sm:pr-6">
                 <img id="featured_image" src="https://aptos-blockbard.s3.ap-southeast-2.amazonaws.com/aptos-crowdfund/crowdfunding-placeholder.png" class="featured_image rounded-md w-full" style="height: 500px">
             </div>
 
-            <div class="flex flex-col w-full sm:w-1/3 sm:px-6 py-2 ">
+            <div class="flex flex-col w-full sm:w-1/2 sm:px-10 py-2 ">
 
                 <div class="flex justify-between">
-                    <span id="count" class="text-gray-500 text-sm">DAO #X</span>
+                    <span id="count" class="text-amber-700 text-sm font-semibold">{{ ucfirst($dao->dao_type).' DAO' }}</span>
                     <div id="edit_dao"></div>
                 </div>
 
-                <h2 id="name" class="inline name text-2xl font-semibold mt-2">Loading DAO...</h2>
-                
-                <div class="relative mt-3 pt-1">
-                    <div class="flex mb-2 items-center justify-between">
-                        <div>
-                            <div class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-amber-600 bg-amber-200">
-                                <span id="amount_raised_percentage" class="amount_raised_percentage">X%</span> Funded - <span id="cf_type" class="cf_type">Fixed</span> Goal
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span id="contributed_amount" class="contributed_amount text-xs font-semibold inline-block text-amber-600">
-                                X
-                            </span>
-                            <span class="text-xs font-semibold inline-block text-amber-600">
-                                /
-                            </span>
-                            <span id="target_amount" class="target_amount text-xs font-semibold inline-block text-amber-600">
-                                XXX
-                            </span>
-                            <span class="text-xs font-semibold inline-block text-amber-600">
-                                APT
-                            </span>
-                        </div>
-                    </div>
-                    <div class="overflow-hidden h-2 mb-2 text-xs flex rounded bg-amber-200">
-                        <div id="progress_bar" style="width:30%" class="progress_bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-amber-500"></div>
-                    </div>
-                    <div class="flex justify-between mb-3 pl-1 pr-1">
+                <h2 id="name" class="inline name text-2xl font-semibold mt-2">{{ $dao->name }}</h2>
 
-                        <div class="flex text-sm days_remaining_container">
-                            <span id="days_remaining" class="days_remaining font-extrabold pr-1 text-amber-600">30</span>
-                            <span>days to go</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <h3 id="description" class="description text-base mt-4 mb-2 text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h3>
+                <h3 id="description" class="description text-base mt-4 mb-2 text-justify">{{ $dao->description }}</h3>
 
                 @include('partials.flash_messages')
 
-                <div id="contribute_form" class="contribute_form mt-3">
+                {{-- <div id="contribute_form" class="contribute_form mt-3">
                     <label for="contribution" class="block text-sm text-amber-700 font-bold">Support This dao:</label>
                     <div class="mt-3 flex rounded-md shadow-sm">
                         <div class="relative flex items-stretch flex-grow focus-within:z-10">
@@ -77,7 +51,7 @@
 
                         <div id="claim_funds_submit"></div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 

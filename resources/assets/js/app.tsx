@@ -2,18 +2,6 @@ import "../sass/app.scss";
 
 import ReactDOM from 'react-dom/client'; 
 
-
-// import {
-//     Account,
-//     AccountAddress,
-//     AnyNumber,
-//     Aptos,
-//     AptosConfig,
-//     InputViewFunctionData,
-//     Network,
-//     NetworkToNetworkName,
-//   } from "@aptos-labs/ts-sdk";
-
 import { NETWORK } from "./constants";
 import { WalletSelector } from './components/WalletSelector';
 import { WalletProvider } from "./components/WalletProvider";
@@ -33,6 +21,7 @@ import { depositCoinToDao } from "./components/entry-functions/deposit_coin_to_d
 import { depositFaToDao } from "./components/entry-functions/deposit_fa_to_dao";
 import { executeCoinTransferProposal } from "./components/entry-functions/execute_coin_transfer_proposal";
 import { executeProposal } from "./components/entry-functions/execute_proposal";
+import { mintGovernanceTokens } from "./components/entry-functions/mint_governance_tokens";
 
 // view functions
 import { getMetadata } from "./components/view-functions/get_metadata";
@@ -52,6 +41,20 @@ interface Metadata {
     icon: string;
     website: string;
 }
+
+var governanceTokensMintedSuccessMessage = `
+    <div class="success_notification rounded-md bg-green-50 p-4 mt-2 mb-1 border border-green-600">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-3">
+                <p class="sucess_message text-sm font-medium text-green-800">Mint successful. Have fun!</p>
+            </div>
+        </div>
+    </div>`;
 
 var contributeSuccessMessage = `
     <div class="success_notification rounded-md bg-green-50 p-4 mt-2 mb-1 border border-green-600">
@@ -127,8 +130,6 @@ function InitDaoSubmitButton() {
             let image_url: string   = create_dao_form.find('.image_url').val() as string;
             
             let governance_token_metadata: string = await getMetadataAddress();
-            console.log("governance_token_metadata_address: ", governance_token_metadata);
-            // let governance_token_metadata: Metadata = await getMetadata();
 
             const response = await signAndSubmitTransaction(
                 initDao({
@@ -145,9 +146,11 @@ function InitDaoSubmitButton() {
             await aptos.waitForTransaction({ transactionHash: response.hash });
 
             // Mark the DAO as initialized in the database
-            let update_response = await fetch(`/daos/update/${dao_type}/${next_available_dao.dao_id}`, {
-                method: 'PUT',
+            console.log(`dao id: ${next_available_dao.dao_id} | signer: ${account.address}`)
+            let update_response = await fetch(`/daos/update/${dao_type}/${next_available_dao.dao_id}?signer=${account.address}`, {
+                method: 'GET'
             });
+            
 
             // Check if the update was successful
             if (!update_response.ok) {
@@ -238,3 +241,66 @@ $(document).ready(function () {
 });
 
 
+function MintOracleTokensButton() {
+    const { account, signAndSubmitTransaction } = useWallet();
+
+    const mintOracleTokenDiv = async () => {
+      try {
+        
+        let aptosConfig = new AptosConfig({ network: NETWORK });
+        let aptos       = new Aptos(aptosConfig);
+
+        var faucet = $('#faucet');
+        let amount: number = faucet.find('#mint_amount').val() as number;
+
+        const response = await signAndSubmitTransaction(
+          mintGovernanceTokens({
+            amount
+          })
+        );
+  
+        // Wait for transaction to complete
+        console.log('executing');
+        await aptos.waitForTransaction({ transactionHash: response.hash });
+  
+        // update total contribution amount
+        console.log('success minted');
+
+        $('.notification_container').find('.general_notification').remove();
+        $(governanceTokensMintedSuccessMessage).appendTo('.notification_container').fadeIn(2000);
+        faucet.find('#mint_amount').val('')
+
+        setTimeout(() => {
+            $('.notification_container .success_notification').fadeOut(1000);
+        }, 5000);
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    return (
+      <div>
+        <button
+          className={`${!account ? 'opacity-60 cursor-not-allowed' : '' } bg-amber-500 flex items-center justify-center text-white active:bg-amber-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}
+          onClick={mintOracleTokenDiv}
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" className="inline h-5 w-5 text-white mr-3" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            Mint
+        </button>
+      </div>
+    );
+}
+
+
+const MintOracleTokensButtonExists = document.getElementById('mint_oracle_tokens_button');
+if (MintOracleTokensButtonExists) {
+  const root = ReactDOM.createRoot(MintOracleTokensButtonExists);
+  root.render(
+    <WalletProvider>
+      <MintOracleTokensButton />
+    </WalletProvider>
+  );
+}

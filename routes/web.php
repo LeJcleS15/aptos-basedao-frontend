@@ -21,10 +21,11 @@ Route::get('/faucet', ['uses' => 'DaoController@faucet'])->name('faucet');
 
 Route::get('/daos', ['uses' => 'DaoController@showAll'])->name('show_all_daos');
 
-Route::put('/daos/update/{type}/{id}', ['uses' => 'DaoController@setTakenDao'])->name('set_taken_dao');
+// temp approach - set access permissions in future
+Route::get('/daos/update/{type}/{id}', ['uses' => 'DaoController@setTakenDao'])->name('set_taken_dao');
 Route::get('/daos/{type}', ['uses' => 'DaoController@getNextAvailableDao'])->name('get_next_available_dao');
 
-Route::get('/daos/{id}', ['uses' => 'DaoController@show'])->name('show_dao');
+Route::get('/daos/{type}/{id}', ['uses' => 'DaoController@show'])->name('show_dao');
 
 Route::get('/start', ['uses' => 'DaoController@create'])->name('create_dao');
 Route::get('/daos/{id}/info', ['uses' => 'DaoController@edit'])->name('edit_dao');

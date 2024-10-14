@@ -19,6 +19,9 @@ return new class extends Migration
             $table->unsignedBigInteger('dao_id')->default(0);
             $table->string('initializer')->nullable();
             $table->boolean('is_initialized')->default(false);
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

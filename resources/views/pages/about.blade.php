@@ -9,7 +9,7 @@
                 <div>
                     <h2 class="text-base text-gray-700 font-semibold tracking-wide uppercase">0xBlockBard</h2>
                     <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-amber-600 sm:text-4xl">About BaseDAO</h3>
-                    <p class="mt-4 text-md text-gray-500 italic font-merriweather">Decentralised DAO Generator on Aptos</p>
+                    <p class="mt-4 text-md text-gray-500 italic font-merriweather">Collectively building the future ecosystem on Aptos</p>
                 </div>
             </div>
             <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
@@ -31,7 +31,7 @@
                                 <svg class="flex-none w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                                 </svg>
-                                <span class="ml-2">Crowdfunding the future, one idea at a time.</span>
+                                <span class="ml-2">Collectively building the future </span>
                             </figcaption>
                         </figure>
                     </div>
@@ -39,16 +39,27 @@
                 </div>
                 <div class="mt-8 lg:mt-0">
                     
-                    <div class="mt-5 prose prose-amber text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1 text-justify pr-5 space-y-6">
+                    <div class="mt-5 prose prose-amber text-gray-600 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1 text-justify pr-5 space-y-6">
 
-                        <p>BaseDAO</p>
+                        <p><span class="font-semibold text-amber-600">BaseDAO</span> simplifies the creation and management of Decentralized Autonomous Organisations (DAOs) on the Aptos blockchain.</p>
 
-                        <h3>Who Made This</h3>
-                        <p>BaseDAO is designed and built by <a href="https://twitter.com/0xblockbard" target="_blank">@0xblockbard</a>.
-                        <p>Frameworks and tools used:</p>
-                        <ul role="list">
-                            <li>Laravel and Tailwind CSS</li>
-                        </ul>
+                        <p>With just one click, anyone can establish a DAO for their community, choosing a governance model that aligns closest with their group’s unique needs and preferences.</p>
+
+                        <p>As the New York Times describes, "a DAO (pronounced dow) is a relatively new kind of organisational structure, built with blockchain technology, that is often described as a sort of crypto co-op.”</p>
+
+                        <p>While DAOs originated within the crypto and blockchain space, their applications extend to a variety of real-world domains, such as life sciences with LabDAO and humanitarian projects through Impact DAOs.</p>
+
+                        <p>As technology and the world evolves, DAOs have become an essential tool for decentralised governance that can support a wide range of purposes — from investment groups to project collaborations, and even initiatives aimed at global change.</p>
+
+                        <p>With BaseDAO, we want to abstract away the technical complexities, making it extremely easy for anyone to set up and manage a DAO, regardless of their technical expertise — so they can focus on what truly matters: building their community.</p>
+
+                        <p class="font-semibold italic">By 0xBlockBard</p>
+
+                        <p><span class="font-semibold">Twitter / X:</span> <a class="hover:underline hover:text-indigo-600" target="_blank" href="https://x.com/0xblockbard">https://x.com/0xblockbard</a></p>
+
+                        <p><span class="font-semibold">Substack Newsletter:</span> <a class="hover:underline hover:text-indigo-600" target="_blank" href="https://www.0xblockbard.com/">https://www.0xblockbard.com</a></p>
+                        
+
                     </div>
                 </div>
             </div>
@@ -65,7 +76,7 @@
 
     <script src="https://aptos-blockbard.s3.ap-southeast-2.amazonaws.com/assets/js/scrollToFixed.js"></script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             function handleScrollToFixed() {
                 // check screen width and apply scrollToFixed for desktop screens (greater than 768px)
@@ -84,6 +95,6 @@
                 handleScrollToFixed();
             });
         });
-    </script>
+    </script> --}}
 
 @endsection
