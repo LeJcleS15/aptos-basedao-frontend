@@ -24,13 +24,13 @@
                         <ul class="mt-1 sm:mt-4 space-y-4 text-md">
 
                             <li>
-                                <a href="{{ route('about') }}" class="text-gray-500 hover:text-gray-900">
+                                <a href="{{ route('about') }}" class="text-gray-500 hover:text-amber-600">
                                     About
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{ route('guide') }}" class="text-gray-500 hover:text-gray-900">
+                                <a href="{{ route('guide') }}" class="text-gray-500 hover:text-amber-600">
                                     Guide
                                 </a>
                             </li>
@@ -45,8 +45,14 @@
                         <ul class="mt-1 sm:mt-4 space-y-4 text-md">
 
                             <li>
-                                <a href="{{ route('show_all_daos') }}" class="text-gray-500 hover:text-gray-900">
+                                <a href="{{ route('show_all_daos') }}" class="text-gray-500 hover:text-amber-600">
                                     DAOs
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('faucet') }}" class="text-gray-500 hover:text-amber-600">
+                                    Faucet
                                 </a>
                             </li>
 

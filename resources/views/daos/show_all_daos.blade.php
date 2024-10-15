@@ -25,16 +25,20 @@
                         
                         <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
                            <div class="flex-shrink-0 relative">
-                              <a href="{{ route('show_dao', [$dao->dao_type, $dao->dao_id])}}"><img class="lazy h-72 w-full object-cover hover:opacity-70" src="{{ $dao->image_url }}" alt="{{ $dao->name }}"></a>
-                              <div class="absolute bottom-8 right-3"><span class="inline-flex items-center px-2.5 py-0.5 rounded-sm text-xs font-medium bg-yellow-100 text-yellow-800">{{ ucfirst($dao->dao_type) }}</span></div>
-                              <div class="flex relative overflow-hidden h-3 text-xs bg-white">
-                                 <div class="progress_bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600" style="width: 0%;"></div>
-                              </div>
+                                <a href="{{ route('show_dao', [$dao->dao_type, $dao->dao_id])}}">
+                                    <img class="lazy h-72 w-full object-cover hover:opacity-70" src="{{ $dao->image_url }}" alt="{{ $dao->name }}" onerror="this.onerror=null; this.src='https://res.cloudinary.com/blockbard/image/upload/c_scale,w_auto,q_auto,f_auto,fl_lossy/v1728905872/dao-image-not-found-2_siqpba.png';">
+                                </a>
+                                <div class="absolute bottom-8 right-3"><span class="inline-flex items-center px-2.5 py-0.5 rounded-sm text-xs font-medium bg-yellow-100 text-yellow-800">{{ ucfirst($dao->dao_type) }}</span></div>
+                                {{-- <div class="flex relative overflow-hidden h-3 text-xs bg-white">
+                                    <div class="progress_bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600" style="width: 0%;"></div>
+                                </div> --}}
                            </div>
-                           <div class="flex-1 bg-white pt-3 p-6 flex flex-col justify-between ">
+                           <div class="flex-1 bg-amber-100 pt-3 p-6 flex flex-col justify-between ">
                               <div class="flex-1">
                                  <p class="text-xl font-semibold showcase_text_gray_900"><a href="{{ route('show_dao', [$dao->dao_type, $dao->dao_id])}}" class="hover:underline">{{ $dao->name}}</a></p>
-                                 <p class="mt-3 text-base text-gray-500 text-justify">{{ $dao->description }}</p>
+                                 {{-- <p class="mt-3 text-base text-gray-500 text-justify">{{ \Illuminate\Support\Str::limit($dao->description, 250) }}</p> --}}
+                                 <p class="mt-3 text-base text-gray-600 text-justify">{{ \Illuminate\Support\Str::words($dao->description, 50, '...') }}</p>
+
                               </div>
                            </div>
                         </div>

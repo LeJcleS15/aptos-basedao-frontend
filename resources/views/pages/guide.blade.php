@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col w-8/12 px-12 py-6 m-auto">
+    <div class="flex flex-col w-8/12 px-12 pt-20 pb-28 m-auto">
 
         <div class="flex flex-col pl-3">
 

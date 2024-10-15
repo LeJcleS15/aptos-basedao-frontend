@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="{{ route('about') }}" class="{{ \Request::route()->getName() == 'about' ? 'border-amber-500 text-amber-900' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:border-amber-500">
+                    <a href="{{ route('about') }}" class="{{ \Request::route()->getName() == 'about' ? 'border-amber-500 text-amber-700' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:border-amber-500">
                         About
                     </a>
 
@@ -19,15 +19,15 @@
                         Creators
                     </a> --}}
 
-                    <a href="{{ route('show_all_daos') }}" class="{{ \Request::route()->getName() == 'show_all_daos' ? 'border-amber-500 text-amber-900' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:border-amber-500">
+                    <a href="{{ route('show_all_daos') }}" class="{{ (\Request::route()->getName() == 'show_all_daos' or \Request::route()->getName() == 'show_dao') ? 'border-amber-500 text-amber-700' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:border-amber-500">
                         DAOs
                     </a>
 
-                    <a href="{{ route('faucet') }}" class="{{ \Request::route()->getName() == 'faucet' ? 'border-amber-500 text-amber-900' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    <a href="{{ route('faucet') }}" class="{{ \Request::route()->getName() == 'faucet' ? 'border-amber-500 text-amber-700' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                         Faucet
                     </a>
 
-                    <a href="{{ route('guide') }}" class="{{ \Request::route()->getName() == 'guide' ? 'border-amber-500 text-amber-900' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                    <a href="{{ route('guide') }}" class="{{ \Request::route()->getName() == 'guide' ? 'border-amber-500 text-amber-700' : 'border-transparent text-gray-500 hover:border-amber-500 hover:text-amber-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                         Guide
                     </a>
 

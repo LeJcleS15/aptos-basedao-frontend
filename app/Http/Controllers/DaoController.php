@@ -37,9 +37,35 @@ class DaoController extends Controller
         }
     }
 
+    public function showProposal($type, $id, $proposal_id){
+        try {
+
+            $dao = Dao::where('dao_type', $type)
+                ->where('dao_id', $id)
+                ->first();
+
+            return view('daos.show_proposal', compact('id', 'dao', 'proposal_id'));
+        } catch(\Exception $e){
+            abort(400);
+        }
+    }
+
     public function create(){
         try {
             return view('daos.create_dao');
+        } catch(\Exception $e){
+            abort(400);
+        }
+    }
+
+    public function createProposal($type, $id){
+        try {
+
+            $dao = Dao::where('dao_type', $type)
+                ->where('dao_id', $id)
+                ->first();
+
+            return view('daos.create_proposal', compact('id', 'dao'));
         } catch(\Exception $e){
             abort(400);
         }

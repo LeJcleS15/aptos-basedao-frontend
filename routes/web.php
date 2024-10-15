@@ -28,7 +28,9 @@ Route::get('/daos/{type}', ['uses' => 'DaoController@getNextAvailableDao'])->nam
 Route::get('/daos/{type}/{id}', ['uses' => 'DaoController@show'])->name('show_dao');
 
 Route::get('/start', ['uses' => 'DaoController@create'])->name('create_dao');
-Route::get('/daos/{id}/info', ['uses' => 'DaoController@edit'])->name('edit_dao');
+// Route::get('/daos/{id}/info', ['uses' => 'DaoController@edit'])->name('edit_dao');
 
+Route::get('/create-proposal/{type}/{id}', ['uses' => 'DaoController@createProposal'])->name('create_proposal');
+Route::get('/daos/{type}/{id}/proposals/{proposal_id}', ['uses' => 'DaoController@showProposal'])->name('show_proposal');
 
 

@@ -55,9 +55,9 @@
 
                         <p class="font-semibold italic">By 0xBlockBard</p>
 
-                        <p><span class="font-semibold">Twitter / X:</span> <a class="hover:underline hover:text-indigo-600" target="_blank" href="https://x.com/0xblockbard">https://x.com/0xblockbard</a></p>
+                        <p><span class="font-semibold">Twitter / X:</span> <a class="text-amber-600 hover:underline hover:text-amber-700" target="_blank" href="https://x.com/0xblockbard">https://x.com/0xblockbard</a></p>
 
-                        <p><span class="font-semibold">Substack Newsletter:</span> <a class="hover:underline hover:text-indigo-600" target="_blank" href="https://www.0xblockbard.com/">https://www.0xblockbard.com</a></p>
+                        <p><span class="font-semibold">Substack Newsletter:</span> <a class="text-amber-600 hover:underline hover:text-amber-700" target="_blank" href="https://www.0xblockbard.com/">https://www.0xblockbard.com</a></p>
                         
 
                     </div>
@@ -66,35 +66,5 @@
         </div>
     </div>
 
-
-@endsection
-
-
-@section('scripts')
-
-    {{-- @vite('resources/assets/js/scrollToFixed.js') --}}
-
-    <script src="https://aptos-blockbard.s3.ap-southeast-2.amazonaws.com/assets/js/scrollToFixed.js"></script>
-
-    {{-- <script>
-        $(document).ready(function() {
-            function handleScrollToFixed() {
-                // check screen width and apply scrollToFixed for desktop screens (greater than 768px)
-                if (window.innerWidth > 768) {
-                    $('#about_image').scrollToFixed();
-                } else {
-                    // remove scrollToFixed if the screen width is below 768px
-                    $('#about_image').trigger('detach.ScrollToFixed');
-                }
-            }
-
-            handleScrollToFixed();
-
-            // on window resize
-            $(window).resize(function() {
-                handleScrollToFixed();
-            });
-        });
-    </script> --}}
 
 @endsection

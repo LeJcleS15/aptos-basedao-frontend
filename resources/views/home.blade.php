@@ -43,6 +43,36 @@
 
         @include('pages.partials.testimonials')
 
+        @include('pages.partials.faq')
+
     </div>
 
 @endsection
+
+@section('scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const faqButtons = document.querySelectorAll('[aria-controls^="faq-"]');
+      
+          faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              const contentId = button.getAttribute('aria-controls');
+              const content = document.getElementById(contentId);
+      
+              const isExpanded = button.getAttribute('aria-expanded') === 'true';
+              button.setAttribute('aria-expanded', !isExpanded);
+      
+              // Toggle the visibility of the answer
+              content.classList.toggle('hidden', isExpanded);
+      
+              // Toggle the icons
+              const icons = button.querySelectorAll('[data-slot="icon"]');
+              icons[0].classList.toggle('hidden', !isExpanded); // + icon
+              icons[1].classList.toggle('hidden', isExpanded); // - icon
+            });
+          });
+        });
+      </script>
+    
+@endsection 

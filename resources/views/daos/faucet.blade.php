@@ -12,9 +12,9 @@
                     <span id="count" class="text-amber-700 text-sm font-semibold">Aptos Testnet</span>
                 </div>
 
-                <h2 id="name" class="inline name text-2xl font-semibold mt-2">Token Faucet</h2>
+                <h2 id="name" class="inline name text-2xl font-semibold mt-2">Governance Token Faucet</h2>
                 
-                <p class="text-base mt-4 text-justify">Easily mint test tokens to begin interacting with our DAOs on the Aptos testnet.</p>
+                <p class="text-base mt-4 text-justify">Easily mint test governance tokens to begin interacting with our DAOs on the Aptos testnet.</p>
                 <p class="text-base mt-2 text-justify">These tokens will enable you to participate in various DAOs across our platform.</p>
                 <p class="text-base mt-2 text-justify">Create and vote on proposals, and experiment with decentralised governance in a risk-free environment.</p>
                 
@@ -44,8 +44,11 @@
 
             </div>
 
-            <div class="flex w-full sm:w-60p sm:pl-6 pl-20 pt-8">
-                <img id="featured_image" src="https://aptos-blockbard.s3.ap-southeast-2.amazonaws.com/aptosforo/mint-faucet.png" class="featured_image rounded-lg w-full shadow-lg" style="height: 500px">
+            <div class="flex relative w-full sm:w-60p sm:pl-6 pl-20 pt-8">
+                <div class="faucet_image_container relative w-full">
+                    <img id="faucet_image" src="https://res.cloudinary.com/blockbard/image/upload/v1728905109/governance-token-faucet-2_dbc3b2.png" class="faucet_image rounded-lg w-full shadow-lg" style="height: 500px">
+                    <div class="overlay rounded-md"></div>
+                </div>
             </div>
 
         </div>
