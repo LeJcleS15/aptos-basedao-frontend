@@ -9,7 +9,7 @@ export type initDaoArguments = {
     governance_token_metadata: string;
 };
 
-export const initDao = (args: initDaoArguments): InputTransactionData => {
+export const initStandardDao = (args: initDaoArguments): InputTransactionData => {
   
     const { dao_identifier, name, description, image_url, governance_token_metadata } = args;
 

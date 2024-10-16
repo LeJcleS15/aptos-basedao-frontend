@@ -82,7 +82,7 @@
                             </div>
 
                             <!-- Vote Button -->
-                            <button class="w-20 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                            <button disabled class="w-20 cursor-not-allowed opacity-70 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
                                 Vote
                             </button>
                         </div>

@@ -44,7 +44,7 @@
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-2xl font-semibold">DAO Proposals</h2>
                     <a href="{{ route('create_proposal', [$dao->dao_type, $dao->dao_id])}}">
-                        <button class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
+                        <button class="items-center cursor-not-allowed opacity-70 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
                             Create New Proposal
                         </button>
                     </a>
@@ -157,7 +157,7 @@
 
                     <!-- Improved Proposal Design -->
                     <a href="{{ route('show_proposal', [$dao->dao_type, $dao->dao_id, 1])}}">
-                    <div class="proposal relative bg-amber-100 p-6 mb-6 rounded-lg shadow-lg hover:shadow-lg hover:shadow-amber-600">
+                    <div class="proposal relative bg-amber-100 p-6 mb-6 rounded-lg shadow-lg hover:shadow-lg hover:shadow-amber-600 transition duration-300">
 
                         <!-- Date Ended Timestamp -->
                         <div class="absolute top-4 right-4 text-xs text-gray-600">
@@ -250,8 +250,8 @@
                             Ended: Sep 30, 2024
                         </div>
                         
-                        <h3 class="text-lg font-semibold">Proposal #1: Increase DAO Fund</h3>
-                        <p class="text-sm mb-4">Description: This proposal suggests increasing the DAO fund by 20%.</p>
+                        <h3 class="text-lg font-semibold">Proposal #0: New DAO Proposal Types</h3>
+                        <p class="text-sm mb-4">Description: This proposal suggests setting new proposal types for quick voting within 1 to 3 days.</p>
                         
                         <!-- Total Votes -->
                         <div class="text-sm">

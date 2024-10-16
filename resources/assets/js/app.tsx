@@ -11,7 +11,8 @@ import { Aptos, AptosConfig, Network, AccountAddress } from "@aptos-labs/ts-sdk"
 import { useState, useEffect } from "react";
 
 // entry functions
-import { initDao } from "./components/entry-functions/init_dao";
+import { initStandardDao } from "./components/entry-functions/init_standard_dao";
+import { initGuildDao } from "./components/entry-functions/init_guild_dao";
 import { createDaoUpdateTransferProposal } from "./components/entry-functions/create_dao_update_proposal";
 import { createCoinTransferProposal } from "./components/entry-functions/create_coin_transfer_proposal";
 import { createFaTransferProposal } from "./components/entry-functions/create_fa_transfer_proposal";
@@ -123,7 +124,8 @@ function InitDaoSubmitButton() {
                 throw new Error('No available DAOs');
             }
 
-            let dao_identifier: string = dao_type+"_dao_"+next_available_dao.dao_id;
+            let dao_id = next_available_dao.dao_id;
+            let dao_identifier: string = dao_type+"_dao_"+dao_id;
 
             let name: string = create_dao_form.find('.name').val() as string;
             let description: string = create_dao_form.find('.description').val() as string;
@@ -131,24 +133,42 @@ function InitDaoSubmitButton() {
             
             let governance_token_metadata: string = await getMetadataAddress();
 
-            const response = await signAndSubmitTransaction(
-                initDao({
-                    dao_identifier,
-                    name,
-                    description,
-                    image_url,
-                    governance_token_metadata
-                })
-            );
-        
-            // Wait for transaction to complete
-            console.log('executing');
-            await aptos.waitForTransaction({ transactionHash: response.hash });
+            console.log("dao_type: ", dao_type);
+            if(dao_type == "standard" || dao_type == "hybrid"){
+                const response = await signAndSubmitTransaction(
+                    initStandardDao({
+                        dao_identifier,
+                        name,
+                        description,
+                        image_url,
+                        governance_token_metadata
+                    })
+                );
 
+                // Wait for transaction to complete
+                console.log('executing');
+                await aptos.waitForTransaction({ transactionHash: response.hash });
+
+            } else if (dao_type == "guild"){
+                const response = await signAndSubmitTransaction(
+                    initGuildDao({
+                        dao_identifier,
+                        name,
+                        description,
+                        image_url
+                    })
+                );
+
+                // Wait for transaction to complete
+                console.log('executing');
+                await aptos.waitForTransaction({ transactionHash: response.hash });
+            };
+            
             // Mark the DAO as initialized in the database
-            console.log(`dao id: ${next_available_dao.dao_id} | signer: ${account.address}`)
-            let update_response = await fetch(`/daos/update/${dao_type}/${next_available_dao.dao_id}?signer=${account.address}`, {
-                method: 'GET'
+            console.log(`dao id: ${dao_id} | signer: ${account.address}`)
+            let update_response = await fetch(`/daos/update/${dao_type}/${dao_id}?signer=${account.address}`, {
+                method: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
             });
             
 
@@ -160,7 +180,7 @@ function InitDaoSubmitButton() {
             console.log('dao created and updated in database');
         
             // redirect to show dao page
-            // window.location.replace(`/campaigns/${nextCampaignId}`);
+            window.location.replace(`/daos/${dao_type}/${dao_id}`);
 
         } catch (error) {
             console.log(error);
